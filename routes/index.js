@@ -6,7 +6,7 @@ const User = require("../schema/User");
 const jwt = require("jsonwebtoken");
 const Task = require("../schema/Task");
 
-router.post("/login", async (req, res, next) => {
+router.post("/login", async (req, res) => {
   const user = await User.findOne({
     username: req.body.username,
   });
@@ -24,7 +24,7 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
-router.post("/signup", (req, res, next) => {
+router.post("/signup", (req, res) => {
   const user = new User({
     username: req.body.username,
     password: hashSync(req.body.password, 10),
